@@ -1,14 +1,37 @@
-import './assets/main.css'
+import { createApp } from "vue";
+import { createWebHistory, createRouter } from "vue-router";
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+// styles
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "@/assets/styles/tailwind.css";
 
+// mouting point for the whole app
 import App from './App.vue'
-import router from './router'
 
-const app = createApp(App)
+// layouts
+import Admin from './layouts/Admin.vue'
 
-app.use(createPinia())
-app.use(router)
+// views for Admin layout
+import Events from "@/views/Events.vue";
 
-app.mount('#app')
+// routes
+const routes = [
+  {
+    path: "/",
+    component: Admin,
+    children: [
+      {
+        path: "/",
+        component: Events,
+      },
+    ],
+  },
+  { path: "/:pathMatch(.*)*", redirect: "/" },
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+createApp(App).use(router).mount("#app");
