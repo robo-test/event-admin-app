@@ -17,30 +17,30 @@ import EventDetail from "@/views/EventDetail.vue";
 
 // routes
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: "/",
-    component: Admin as any,
-    children: [
-      {
+    {
         path: "/",
-        component: Events,
-      },
-      {
-        path: "/create",
-        component: EventDetail,
-      },
-      {
-        path: "/edit/:id",
-        component: EventDetail,
-      },
-    ],
-  },
-  { path: "/:pathMatch(.*)*", redirect: "/" },
+        component: Admin as any,
+        children: [
+            {
+                path: "/",
+                component: Events,
+            },
+            {
+                path: "/create",
+                component: EventDetail,
+            },
+            {
+                path: "/edit/:id",
+                component: EventDetail,
+            },
+        ],
+    },
+    { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
 
 const router: Router = createRouter({
-  history: createWebHistory(),
-  routes,
+    history: createWebHistory(),
+    routes,
 });
 
 createApp(App).use(router).mount("#app");

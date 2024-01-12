@@ -10,8 +10,8 @@
 import CardDetail from "@/components/Cards/CardDetail.vue";
 
 export default {
-  components: {
-    CardDetail,
-  },
+    components: {
+        CardDetail,
+    },
 };
 </script>

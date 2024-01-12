@@ -57,53 +57,53 @@ const route = useRoute();
 const router = useRouter();
 
 const event: Ref<EventItem> = ref({
-  title: '',
-  description: '',
-  location: '',
-  enabled: true,
-  endDate: '',
-  startDate: ''
+    title: '',
+    description: '',
+    location: '',
+    enabled: true,
+    endDate: '',
+    startDate: ''
 })
 
 const submitForm = (e: any): void => {
-  fetch('http://localhost:3000/event/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(event.value)
-  })
-    .then(response => response.json())
-    .then(result => {
-      console.log('POST request successful:', result);
-      router.push('/');
+    fetch('http://localhost:3000/event/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(event.value)
     })
-    .catch(error => {
-      console.error('Error making POST request:', error);
-    });
+        .then(response => response.json())
+        .then(result => {
+            console.log('POST request successful:', result);
+            router.push('/');
+        })
+        .catch(error => {
+            console.error('Error making POST request:', error);
+        });
 }
 
 const saveForm = () => {
-  //TODO implement logic to redirect, loading state and info about result
+    //TODO implement logic to redirect, loading state and info about result
 }
 
 const cancelForm = () => {
-  //TODO implement logic to redirect, loading state and info about result
-  router.push('/');
+    //TODO implement logic to redirect, loading state and info about result
+    router.push('/');
 }
 
 onMounted(async () => {
-  //TODO move domain to constant so it is easily changed in one place
-  if (route.params.id === undefined) {
-    return
-  }
-  const originalEvent = await (await fetch(`http://localhost:3000/event/${route.params.id}/`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })).json()
-  // TODO error handling
-  event.value = { ...originalEvent, endDate: formatDate(originalEvent.endDate), startDate: formatDate(originalEvent.startDate) }
+    //TODO move domain to constant so it is easily changed in one place
+    if (route.params.id === undefined) {
+        return
+    }
+    const originalEvent = await (await fetch(`http://localhost:3000/event/${route.params.id}/`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })).json()
+    // TODO error handling
+    event.value = { ...originalEvent, endDate: formatDate(originalEvent.endDate), startDate: formatDate(originalEvent.startDate) }
 })
 </script>

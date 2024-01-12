@@ -67,26 +67,26 @@ import { RouterLink } from "vue-router";
 import { formatDate } from "@/utils/datetime.ts"
 
 const props = defineProps({
-  cardTitle: {
-    type: String,
-    required: true
-  },
-  upcomingEvents: {
-    type: Boolean,
-    required: false,
-    default: false
-  }
+    cardTitle: {
+        type: String,
+        required: true
+    },
+    upcomingEvents: {
+        type: Boolean,
+        required: false,
+        default: false
+    }
 })
 const events: Ref<EventItem[] | null> = ref(null)
 
 onMounted(async () => {
-  //TODO move domain to constant so it is easily changed in one place
-  events.value = await (await fetch(`http://localhost:3000/event/?upcoming=${props.upcomingEvents}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })).json()
-  // TODO error handling
+    //TODO move domain to constant so it is easily changed in one place
+    events.value = await (await fetch(`http://localhost:3000/event/?upcoming=${props.upcomingEvents}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })).json()
+    // TODO error handling
 })
 </script>

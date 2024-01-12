@@ -20,23 +20,23 @@
 import { createPopper, type VirtualElement } from "@popperjs/core";
 
 export default {
-  data() {
-    return {
-      dropdownPopoverShow: false,
-    };
-  },
-  methods: {
-    toggleDropdown: function (event: any) {
-      event.preventDefault();
-      if (this.dropdownPopoverShow) {
-        this.dropdownPopoverShow = false;
-      } else {
-        this.dropdownPopoverShow = true;
-        createPopper(this.$refs.btnDropdownRef as VirtualElement|Element, this.$refs.popoverDropdownRe as HTMLElement, {
-          placement: "bottom-start",
-        });
-      }
+    data() {
+        return {
+            dropdownPopoverShow: false,
+        };
     },
-  },
+    methods: {
+        toggleDropdown: function (event: any) {
+            event.preventDefault();
+            if (this.dropdownPopoverShow) {
+                this.dropdownPopoverShow = false;
+            } else {
+                this.dropdownPopoverShow = true;
+                createPopper(this.$refs.btnDropdownRef as VirtualElement|Element, this.$refs.popoverDropdownRe as HTMLElement, {
+                    placement: "bottom-start",
+                });
+            }
+        },
+    },
 };
 </script>

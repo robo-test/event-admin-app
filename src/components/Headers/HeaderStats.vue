@@ -63,8 +63,8 @@
 import CardStats from "@/components/Cards/CardStats.vue";
 
 export default {
-  components: {
-    CardStats,
-  },
+    components: {
+        CardStats,
+    },
 };
 </script>

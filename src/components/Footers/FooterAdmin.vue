@@ -60,10 +60,10 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      date: new Date().getFullYear(),
-    };
-  },
+    data() {
+        return {
+            date: new Date().getFullYear(),
+        };
+    },
 };
 </script>

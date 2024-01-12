@@ -13,8 +13,8 @@
 import CardTable from "@/components/Cards/CardTable.vue";
 
 export default {
-  components: {
-    CardTable,
-  },
+    components: {
+        CardTable,
+    },
 };
 </script>
