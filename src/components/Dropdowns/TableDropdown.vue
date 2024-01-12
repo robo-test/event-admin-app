@@ -15,8 +15,9 @@
     </div>
   </div>
 </template>
-<script>
-import { createPopper } from "@popperjs/core";
+
+<script lang="ts">
+import { createPopper, type VirtualElement } from "@popperjs/core";
 
 export default {
   data() {
@@ -25,13 +26,13 @@ export default {
     };
   },
   methods: {
-    toggleDropdown: function (event) {
+    toggleDropdown: function (event: any) {
       event.preventDefault();
       if (this.dropdownPopoverShow) {
         this.dropdownPopoverShow = false;
       } else {
         this.dropdownPopoverShow = true;
-        createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
+        createPopper(this.$refs.btnDropdownRef as VirtualElement|Element, this.$refs.popoverDropdownRe as HTMLElement, {
           placement: "bottom-start",
         });
       }
